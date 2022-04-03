@@ -113,15 +113,17 @@ public class Main {
             System.out.print(i+1 + " день: " + stepTracker.getDaySteps(month, i) + ", ");
         }
         //System.out.println("\n");
-99
+
         System.out.println("Общее количество шагов: "
                 + stepTracker.getMonthTotalSteps(month));
         System.out.println("Максимальное пройденное количество шагов: "
                 + stepTracker.getMonthMaxSteps(month));
         System.out.println("Среднее количество шагов (округлено вниз): "
                 + stepTracker.getMonthAvgSteps(month));
-        System.out.println("Пройденная дистанция (в км): ");
-        System.out.println("Количество сожжённых килокалорий: ");
+        System.out.println("Пройденная дистанция (в км): "
+                + stepTracker.convertStepsToKm(month) );
+        System.out.println("Количество сожжённых килокалорий: "
+                + stepTracker.countCalories(month));
         System.out.println("Лучшая серия: ");
     }
 }

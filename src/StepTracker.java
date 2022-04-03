@@ -1,7 +1,7 @@
 public class StepTracker {
     int dayStepGoal = 10000;
     MonthData[] monthToData;
-    Converter converter;
+    Converter converter = new Converter();
 
     /* Получить текущую цель по шагам */
     public int getDayStepGoal() {
@@ -21,6 +21,7 @@ public class StepTracker {
         monthToData[month].storeDaySteps(day, steps);
     }
 
+
     /* Получить пройденные шаги  за день месяца */
     public int getDaySteps(int month, int day)
     {
@@ -29,7 +30,11 @@ public class StepTracker {
 
 
     public int getMonthTotalSteps (int month){
-        return monthToData[month].getTotalSteps();
+        int totalSteps = 0;
+        for (int i = 0; i < 30; i++) {
+            totalSteps = totalSteps + monthToData[month].stepStore[i];
+        }
+        return totalSteps;
     }
 
 
@@ -43,12 +48,21 @@ public class StepTracker {
     }
 
 
+    public double convertStepsToKm (int month) {
+        return converter.stepsToKm(getMonthTotalSteps(month));
+    }
+
+
+    public int countCalories (int month) {
+        return converter.countCalories(getMonthTotalSteps(month));
+    }
+
+
     public StepTracker() {
         monthToData = new MonthData[12];
         for (int i = 0; i < monthToData.length; i++) {
             monthToData[i] = new MonthData();
         }
-        converter = new Converter();
     }
 
 
