@@ -14,12 +14,11 @@ public class Main {
 
         while (userInput != 0) {
             if ( userInput == 1 ) {
-                storeDaySteps (stepTracker);
+                storeDaySteps (scanner, stepTracker);
             } else if ( userInput == 2 ) {
-                System.out.println("Ты ввел 2");
-                getStepStat(stepTracker);
+                getStepStat(scanner, stepTracker);
             } else if ( userInput == 3 ){
-                storeNewStepGoal(stepTracker);
+                storeNewStepGoal(scanner, stepTracker);
             } else if ( userInput == 4 ){
                 System.out.println("До встречи, досточтимый!");
                 return;
@@ -45,9 +44,7 @@ public class Main {
 
 
     /* Метод запрашивает новую цель по шагам и сохраняет ее */
-    private static void storeNewStepGoal (StepTracker stepTracker){
-        Scanner scanner = new Scanner(System.in);
-
+    private static void storeNewStepGoal (Scanner scanner, StepTracker stepTracker){
         System.out.println("Введи новую цель по шагам, досточтимый. Допускаются только целые положительные значения");
         int userInput = scanner.nextInt();
         if (userInput > 0) {
@@ -60,11 +57,10 @@ public class Main {
 
 
     /* Метод запрашивает и сохраняет количество шагов за определенный день месяца */
-    private static void storeDaySteps (StepTracker stepTracker) {
+    private static void storeDaySteps (Scanner scanner, StepTracker stepTracker) {
         int month;
         int day;
         int steps;
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Досточтимый, для сохранения пройденных шагов укажи месяц (0-12), день (0-29) и количество шагов (>=0)");
 
@@ -96,9 +92,7 @@ public class Main {
 
 
     /* Метод выводит статистику по шагам за указанный месяц */
-    private static void getStepStat(StepTracker stepTracker) {
-        Scanner scanner = new Scanner(System.in);
-
+    private static void getStepStat(Scanner scanner, StepTracker stepTracker) {
         System.out.println("Досточтимый, статстика за какой месяц тебя интересует? Укажи от 0 до 11");
 
         System.out.print("   Месяц: ");

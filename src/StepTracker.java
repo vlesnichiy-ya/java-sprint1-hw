@@ -58,6 +58,15 @@ public class StepTracker {
     }
 
 
+    public int getBestStepSeries (int month){
+        int bestSeries=0;
+        int maxSteps=0;
+        //если количество шагов больше целевого - bestSeries++
+        // maxSteps=к-во шагов
+
+        return bestSeries;
+    }
+
     public StepTracker() {
         monthToData = new MonthData[12];
         for (int i = 0; i < monthToData.length; i++) {
