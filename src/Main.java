@@ -23,7 +23,7 @@ public class Main {
                 System.out.println("До встречи, досточтимый!");
                 return;
             } else {
-                System.out.println("Я так еще не умею, досточтимый. Поробуй еще раз");
+                System.out.println("Я так еще не умею, досточтимый. Попробуй еще раз");
             }
 
             printMenu();
@@ -93,7 +93,7 @@ public class Main {
 
     /* Метод выводит статистику по шагам за указанный месяц */
     private static void getStepStat(Scanner scanner, StepTracker stepTracker) {
-        System.out.println("Досточтимый, статстика за какой месяц тебя интересует? Укажи от 0 до 11");
+        System.out.println("Досточтимый, статистика за какой месяц тебя интересует? Укажи от 0 до 11");
 
         System.out.print("   Месяц: ");
         int month = scanner.nextInt();
@@ -118,7 +118,8 @@ public class Main {
                 + stepTracker.convertStepsToKm(month) );
         System.out.println("Количество сожжённых килокалорий: "
                 + stepTracker.countCalories(month));
-        System.out.println("Лучшая серия: ");
+        System.out.println("Лучшая серия: "
+                + stepTracker.getBestStepSeries(month) + " день(дней)");
     }
 }
 
