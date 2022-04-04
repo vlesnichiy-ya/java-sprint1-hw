@@ -10,26 +10,21 @@ public class StepTracker {
         return dayStepGoal;
     }
 
-
     /* Сохранить новую цель по шагам */
     public void storeNewDayStepGoal(int newGoal) {
         dayStepGoal = newGoal;
     }
 
-
-    /* Сохранить пройденные шаги  за день месяца */
-    public void storeDaySteps(int month, int day, int steps)
-    {
+    /* Сохранить пройденные шаги за день месяца */
+    public void storeDaySteps(int month, int day, int steps) {
         monthToData[month].stepStore[day] = steps;
     }
-
 
     /* Получить пройденные шаги за день месяца */
     public int getDaySteps(int month, int day)
     {
         return monthToData[month].stepStore[day];
     }
-
 
     /* Получить общее количество шагов за месяц */
     public int getMonthTotalSteps (int month){
@@ -40,10 +35,8 @@ public class StepTracker {
         return totalSteps;
     }
 
-
     /* Получить максимальное количество шагов за месяц */
-    public int getMonthMaxSteps(int month)
-    {
+    public int getMonthMaxSteps(int month) {
         int maxSteps = monthToData[month].stepStore[0];
 
         for(int i = 1; i < 30; i++) {
@@ -53,44 +46,36 @@ public class StepTracker {
         return maxSteps;
     }
 
-
     /* Получить среднее количество шагов за месяц */
-    public int getMonthAvgSteps (int month)
-    {
+    public int getMonthAvgSteps (int month) {
         return getMonthTotalSteps(month)/30;
     }
-
 
     /* Сконвертировать шаги в километры */
     public double convertStepsToKm (int month) {
         return converter.stepsToKm(getMonthTotalSteps(month));
     }
 
-
     /* Подсчитать количество калорий */
-    public int countCalories (int month) {
-        return converter.countCalories(getMonthTotalSteps(month));
+    public int convertStepsToCalories (int month) {
+        return converter.stepsToCalories(getMonthTotalSteps(month));
     }
-
 
     /* Найти лучшую серию шагов */
     public int getBestStepSeries (int month){
         int bestSeries=0;
-        int currentS=0;
-
-        //int[] tempSteps = {0, 12000, 13000, 0, 10000, 956, 11000, 12000, 13000};
+        int currentSeries=0;
 
         for (int i = 0; i < monthToData[month].stepStore.length; i++){
             if (monthToData[month].stepStore[i] >= dayStepGoal) {
-                currentS++;
+                currentSeries++;
+                if ( bestSeries < currentSeries ) {
+                    bestSeries = currentSeries;
+                }
             } else {
-                if ( bestSeries < currentS ) bestSeries = currentS;
-                currentS = 0;
+                currentSeries = 0;
             }
         }
-        //условие необходимо для случая, когда лучшая серия - в конце месяца
-        if ( bestSeries < currentS ) bestSeries = currentS;
-
         return bestSeries;
     }
 

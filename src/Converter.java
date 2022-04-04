@@ -1,13 +1,12 @@
 public class Converter {
+    double stepLength = 0.75;
+    int caloriesPerStep = 50;
 
-   public double stepsToKm(int steps) {
-       return steps * 0.75 / 1000;
+    public double stepsToKm(int steps) {
+       return steps * stepLength / 1000;
    }
 
-    public int countCalories(int steps) {
-       return steps * 50 / 1000;
-    }
-
-    Converter(){
+    public int stepsToCalories(int steps) {
+       return steps * caloriesPerStep / 1000;
     }
 }
